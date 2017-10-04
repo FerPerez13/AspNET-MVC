@@ -1,7 +1,53 @@
 ﻿
+@model List<WebApplication1.Models.Pelicula>
 @{
     ViewBag.Title = "MiAction";
 }
 
-<h2>MiAction</h2>
+<h1>@ViewBag.Message</h1>
+<p>Esta base de datos la tenemos en una clase, pero lo ideal es que estuviera en una base de datos real.</p>
 
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Visto</td>
+            <th>Título</th>
+            <th>Duración</th>
+            <th>Año de publicación</th>
+            <th>País</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var pelicula in Model)
+        {
+            var peliculaVista = "";
+            if (!pelicula.Visto)
+            {
+                peliculaVista = "danger";
+            }
+            @*Pasamos a la tabla la condición*@
+            <tr class="@peliculaVista"> 
+                <td>@pelicula.Visto</td>
+                <td>@pelicula.Titulo</td>
+                <td>@pelicula.Duracion</td>
+                <td>@pelicula.Publicacion.ToString("dd/MM/yy")</td>
+                <td>@pelicula.Pais</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@*######### Display y DisplayTemplates ########*@
+<h2>Detalle de una película con otro estilo (Html.Display("{objeto}"))</h2>
+@Html.Display("Objeto")
+
+@*######### Editor y EditorTemplates ##########*@
+<h2>Editor de una película con otro estilo (Html.Editor("{objeto}"))</h2>
+@Html.Editor("Objeto")
+
+@*########## DropDownList ###########*@
+<h2>Selector desplegable (Html.DropDownList("{nombre}", {lista}))</h2>
+@Html.DropDownList("miDropDownList", (List<SelectListItem>)ViewBag.Listado)
+
+@*Vista de la carpeta Shared*@
+@Html.Partial("_LoginPartial") 

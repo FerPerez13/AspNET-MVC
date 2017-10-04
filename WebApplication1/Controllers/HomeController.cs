@@ -3,13 +3,21 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using WebApplication1.DAL;
 using WebApplication1.Models;
-using WebApplication1.Services;
+using WebApplication1.DAL;
 
 namespace WebApplication1.Controllers
 {
     public class HomeController : Controller
     {
+        private PeliculasRepository _peliculasRepository;
+
+        public HomeController()
+        {
+            _peliculasRepository = new PeliculasRepository();
+        }
+
         public ActionResult Index()
         {
             return View();
@@ -19,7 +27,7 @@ namespace WebApplication1.Controllers
         {
             ViewBag.Message = "Your application description page.";
 
-            var peliculaService = new PeliculasService();
+            var peliculaService = new PeliculasRepository();
             var model = peliculaService.ObtenerPeliculas();
 
             return View(model);
@@ -102,7 +110,15 @@ namespace WebApplication1.Controllers
         // ########## A continuación se hará todo lo referente a las Vistas ##########
          public ActionResult MiAction()
         {
-            return View();
+            ViewBag.Message = "Peliculas que tenemos en la BBDD";
+            var model = _peliculasRepository.ObtenerPeliculas();
+            
+            ViewBag.Objeto = model[2]; // Le pasamos a @Html.Display() el objeto con el ViewBag
+
+            ListItems listItems = new ListItems();
+            ViewBag.Listado = listItems.obtenerListado();
+
+            return View(model);
         }
 
     }
