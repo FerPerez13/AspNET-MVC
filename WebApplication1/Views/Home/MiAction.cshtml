@@ -49,5 +49,12 @@
 <h2>Selector desplegable (Html.DropDownList("{nombre}", {lista}))</h2>
 @Html.DropDownList("miDropDownList", (List<SelectListItem>)ViewBag.Listado)
 
+@*########## Vista Parcial (Creación e implementación) ##########*@
+<h2>Creación e implementación de una VistaParcial</h2>
+@Html.Partial("_ListaPeliculas", (List<WebApplication1.Models.Pelicula>)ViewBag.ListaPelis)
+@*Ahora podrás poner todas las veces que quieras este código y se verá en las vistas este fragmento*@
+
+
+
 @*Vista de la carpeta Shared*@
 @Html.Partial("_LoginPartial") 

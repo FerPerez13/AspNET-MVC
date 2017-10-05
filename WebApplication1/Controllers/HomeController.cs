@@ -108,7 +108,7 @@ namespace WebApplication1.Controllers
         //*/
 
         // ########## A continuación se hará todo lo referente a las Vistas ##########
-         public ActionResult MiAction()
+        public ActionResult MiAction()
         {
             ViewBag.Message = "Peliculas que tenemos en la BBDD";
             var model = _peliculasRepository.ObtenerPeliculas();
@@ -117,6 +117,8 @@ namespace WebApplication1.Controllers
 
             ListItems listItems = new ListItems();
             ViewBag.Listado = listItems.obtenerListado();
+
+            ViewBag.ListaPelis = model; // Le pasamos a _ListaPeliculas el listado de películas
 
             return View(model);
         }

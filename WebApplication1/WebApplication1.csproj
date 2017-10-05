@@ -276,6 +276,7 @@
     <Content Include="Views\Home\DisplayTemplates\Pelicula.cshtml" />
     <Content Include="Views\Home\DisplayTemplates\DateTime.cshtml" />
     <Content Include="Views\Home\EditorTemplates\DateTime.cshtml" />
+    <Content Include="Views\Shared\_ListaPeliculas.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

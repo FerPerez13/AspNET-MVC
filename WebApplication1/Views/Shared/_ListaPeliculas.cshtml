@@ -1,0 +1,10 @@
+﻿@*Por convenio, a las vistas parciales se les pone "_" para diferenciarlas de las completas a simple vista*@
+
+@model List<WebApplication1.Models.Pelicula>
+
+@foreach ( var pelicula in Model)
+{
+    <div style="background-color: seagreen; color:white">
+        <span>@pelicula.Titulo (@pelicula.Duracion)</span>
+    </div>
+}
